@@ -4,9 +4,9 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:vue/vue3-essential",
-    "eslint:recommended",
-    "plugin:prettier/recommended",
+    "plugin:vue/vue3-essential", // vue3的规范
+    "eslint:recommended", // eslint默认推荐的规范
+    "@vue/prettier", // 默认vue里面prettier的规范
   ],
   parserOptions: {
     parser: "@babel/eslint-parser",
