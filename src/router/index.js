@@ -1,11 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import { mobile } from "./mobile";
+import { pc } from "./pc";
 
 const routes = [
+  ...mobile,
+  ...pc,
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "root",
+    component: () => import(/* webpackChunkName: "root" */ "../views/index"),
   },
 ];
 
