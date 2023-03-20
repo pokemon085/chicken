@@ -1,14 +1,30 @@
+const errorPage = [
+  {
+    path: "/404",
+    component: () => import("@/common/mobile/404"),
+  },
+  {
+    path: "/:pathMatch(.*)",
+    redirect: "/404",
+  },
+];
+
 export const mobile = [
   {
-    path: "/mobileHome",
-    name: "mobileHome",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(
-        /* webpackChunkName: "mobileHome" */ "../views/mobile/mobileHome.vue"
-      ),
-    children: [],
+    path: "mobile",
+    name: "mobile",
+    redirect: { name: "mobileHome" },
+    component: () => import(/* webpackChunkName: "mobile" */ "../views/mobile"),
+    children: [
+      {
+        path: "home",
+        name: "mobileHome",
+        component: () =>
+          import(/* webpackChunkName: "mobileHome" */ "../views/mobile/home"),
+        children: [],
+      },
+      ...errorPage,
+    ],
   },
+  ...errorPage,
 ];

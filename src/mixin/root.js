@@ -1,9 +1,9 @@
 import isMobile from "@/lib/isMobile";
 
-export const determineHome = (to, from, next) => {
+export const determineDevice = (to, from, next) => {
   if (isMobile) {
-    next("/mobileHome");
+    next();
   } else {
-    next("/pcHome");
+    next("pc");
   }
 };

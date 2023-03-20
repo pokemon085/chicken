@@ -1,6 +1,8 @@
 <template>
-  view
-  <router-view />
+  <div>
+    mobile
+    <router-view />
+  </div>
 </template>
 
 <script>
