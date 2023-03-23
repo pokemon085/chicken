@@ -1,16 +1,24 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { mobile } from "./mobile";
-import { pc } from "./pc";
+import mobile from "./mobile";
+import pc from "./pc";
 import isMobile from "@/lib/isMobile";
+// import errorPage from "./errorPage";
 
 const routes = [
   {
     path: "/",
     name: "root",
-    redirect: isMobile ? "mobile" : "pc",
-    component: () => import(/* webpackChunkName: "root" */ "../views"),
-    children: [...mobile, ...pc],
+    component: () => import(/* webpackChunkName: "pc" */ "../views/pc"),
+    children: [...pc],
+    beforeEnter: (to, from, next) => {
+      if (isMobile) {
+        next("/mobile");
+      } else {
+        next();
+      }
+    },
   },
+  ...mobile,
 ];
 
 const router = createRouter({
