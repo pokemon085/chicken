@@ -1,5 +1,11 @@
 <template>
-  <div class="mobileHome">
-    <h1>This is an mobileHome page</h1>
+  <div>
+    <banner />
   </div>
 </template>
+
+<script setup>
+import banner from "@/views/mobile/banner";
+</script>
+
+<style lang="scss" scoped></style>
